@@ -1,0 +1,7 @@
+{
+  "database": {
+    "port": 27017,
+    "url": "localhost",
+    "name": "CKHC_SHEETS_MGMT"
+  }
+}
