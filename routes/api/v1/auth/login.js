@@ -1,10 +1,33 @@
 const {
-  user: User,
-  sheet: Sheet
+  user: User
 } = require('../../../../infra/schema/index')
 
 module.exports = async (ctx, next) => {
-  let data = await User.find({})
+  // TODO: Password Hash
+  const {
+    email,
+    password
+  } = ctx.request.body
 
-  ctx.throw(400, '111')
+  try {
+    var data
+    data = await User.find({
+      email,
+      password
+    })
+  } catch (error) {
+    ctx.throw(400, 'AUTH_FAILED')
+    return
+  }
+
+  if (!data || data.length <= 0) {
+    ctx.throw(400, 'AUTH_FAILED')
+    return
+  }
+
+  ctx.status = 200
+  ctx.body = {
+    result: 'success',
+    data
+  }
 }
