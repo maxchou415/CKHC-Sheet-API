@@ -28,7 +28,7 @@ $ npm run dev
 
 2. Run it as Production Server <br>
 ```
-npm run prd
+$ npm run prd
 ```
 
 3. The PROD server will run on your server by `PM2`
