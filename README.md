@@ -6,6 +6,9 @@ The api server for management sheets let you manage them much easier.
 - MongoDB
 - Production on Ubuntu/Debian is plus
 
+## Before run the service
+Before run this API Server on your Server, Please make sure MongoDB is already running on your Server.
+
 ## How to Install
 1. Clone this project <br>
 ```
