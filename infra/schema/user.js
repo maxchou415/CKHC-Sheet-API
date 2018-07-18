@@ -9,6 +9,9 @@ const userSchema = new Schema({
   id: {
     type: String
   },
+  userId: {
+    type: String
+  },
   name: {
     type: String
   },
