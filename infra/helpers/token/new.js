@@ -2,7 +2,13 @@ const jwt = require('jsonwebtoken')
 
 const secret = process.env.tokenSecret
 
-module.exports = async (userId) => {
-  let token = jwt.sign(userId, secret)
+module.exports = (userId) => {
+  let token = jwt.sign({
+    data: {
+      userId
+    }
+  }, secret, {
+    algorithm: 'HS512'
+  })
   return token
 }

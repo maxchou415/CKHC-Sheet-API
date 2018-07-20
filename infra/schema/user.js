@@ -9,6 +9,9 @@ const userSchema = new Schema({
   id: {
     type: String
   },
+  userId: {
+    type: String
+  },
   name: {
     type: String
   },
@@ -21,9 +24,9 @@ const userSchema = new Schema({
   studentNumber: {
     type: Number
   },
-  isAdmin: {
-    type: Boolean,
-    default: false
+  role: {
+    type: Number,
+    default: 1
   },
   createdAt: {
     type: Date
