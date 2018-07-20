@@ -14,19 +14,7 @@ app.use(json())
 app.use(logger())
 
 // error-handling
-app.use(async (ctx, next) => {
-  try {
-    await next()
-  } catch (error) {
-    console.log(error)
-    ctx.status = error.status || 500
-    ctx.body = {
-      result: error.message,
-      data: {}
-    }
-    ctx.app.emit('error', error, ctx)
-  }
-})
+app.use(require('./infra/utils').errorHandler)
 
 // logger
 app.use(async (ctx, next) => {
