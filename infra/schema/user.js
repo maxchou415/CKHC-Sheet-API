@@ -24,9 +24,9 @@ const userSchema = new Schema({
   studentNumber: {
     type: Number
   },
-  isAdmin: {
-    type: Boolean,
-    default: false
+  role: {
+    type: Number,
+    default: 1
   },
   createdAt: {
     type: Date
