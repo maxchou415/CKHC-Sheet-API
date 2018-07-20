@@ -8,7 +8,8 @@ module.exports = (userId) => {
       userId
     }
   }, secret, {
-    algorithm: 'HS512'
+    algorithm: 'HS512',
+    expiresIn: '7d'
   })
   return token
 }
