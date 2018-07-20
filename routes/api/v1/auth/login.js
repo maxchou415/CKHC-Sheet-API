@@ -11,7 +11,7 @@ module.exports = async (ctx, next) => {
 
   try {
     var data
-    data = await User.find({
+    data = await User.findOne({
       email,
       password
     })
