@@ -1,4 +1,3 @@
-const helper = require('../../../../infra/helpers/index')
 const {
   user: User
 } = require('../../../../infra/schema/index')
@@ -10,13 +9,11 @@ module.exports = async (ctx, next) => {
     password
   } = ctx.request.body
 
-  const hashedPassword = helper.password.hash(password)
-
-  let data
   try {
-    data = await User.findOne({
+    var data
+    data = await User.find({
       email,
-      password: hashedPassword
+      password
     })
   } catch (error) {
     ctx.throw(400, 'AUTH_FAILED')
@@ -28,11 +25,9 @@ module.exports = async (ctx, next) => {
     return
   }
 
-  const token = helper.token.new(data.userId)
-
   ctx.status = 200
   ctx.body = {
     result: 'success',
-    data: token
+    data
   }
 }
