@@ -16,13 +16,15 @@ const userSchema = new Schema({
     type: String
   },
   email: {
-    type: String
+    type: String,
+    unique: true
   },
   password: {
     type: String
   },
   studentNumber: {
-    type: Number
+    type: Number,
+    unique: true
   },
   role: {
     type: Number,

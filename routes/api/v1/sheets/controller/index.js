@@ -1,0 +1,5 @@
+module.exports.get = require('./get')
+module.exports.getById = require('./getById')
+module.exports.post = require('./post')
+module.exports.patchById = require('./patchById')
+module.exports.deleteById = require('./deleteById')
