@@ -10,6 +10,7 @@ module.exports = async (ctx, next) => {
   // Make sure incoming datas are following the spec
   if (typeof wantedData.studentNumber !== 'number') {
     ctx.throw(400, 'ADD_USER_FAILED')
+    return
   }
 
   // email and studentNumber are unique
@@ -22,15 +23,19 @@ module.exports = async (ctx, next) => {
     createdAt: new Date().toISOString()
   }
 
+  let userData
   try {
-    await new User(data).save()
+    userData = await new User(data).save()
   } catch (error) {
     ctx.throw(400, 'ADD_USER_FAILED')
+    return
   }
+
+  const token = helper.token.new(userData.userId)
 
   ctx.status = 200
   ctx.body = {
     result: 'success',
-    data: {}
+    data: token
   }
 }

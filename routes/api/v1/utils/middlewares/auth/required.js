@@ -4,7 +4,13 @@ const helper = require('../../../../../../infra/helpers')
 module.exports = async (ctx, next) => {
   let token = ctx.header.authorization
 
-  let tokenData = helper.token.data(token)
+  let tokenData
+  try {
+    tokenData = helper.token.data(token)
+  } catch (error) {
+    ctx.throw(400, 'AUTH_FAILED')
+    return
+  }
 
   let userData
   try {
