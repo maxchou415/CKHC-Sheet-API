@@ -10,6 +10,7 @@ module.exports = async (ctx, next) => {
   // Make sure incoming datas are following the spec
   if (typeof wantedData.studentNumber !== 'number') {
     ctx.throw(400, 'ADD_USER_FAILED')
+    return
   }
 
   // email and studentNumber are unique
@@ -26,6 +27,7 @@ module.exports = async (ctx, next) => {
     await new User(data).save()
   } catch (error) {
     ctx.throw(400, 'ADD_USER_FAILED')
+    return
   }
 
   ctx.status = 200
